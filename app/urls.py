@@ -24,5 +24,5 @@ admin.site.index_title = 'Admin'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("__debug__/", include(debug_toolbar.urls)),
-    path('Terenna/', include('core.urls'))
+    path('Trenna/', include('core.urls'))
 ]
