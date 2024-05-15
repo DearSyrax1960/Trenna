@@ -9,4 +9,4 @@ workspace_router.register('board', views.BoardViewSet, basename='workspace-board
 board_router = routers.NestedDefaultRouter(workspace_router, 'board', lookup='board')
 board_router.register('task', views.TaskViewSet, basename='board-tasks')
 # URLConf
-urlpatterns = router.urls + workspace_router.urls
+urlpatterns = router.urls + workspace_router.urls + board_router.urls
