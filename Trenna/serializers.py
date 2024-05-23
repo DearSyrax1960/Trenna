@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from djoser.serializers import UserSerializer as BaseUserSerializer, UserCreateSerializer as BaseUserCreateSerializer
 
 from .models import *
 
@@ -27,3 +28,14 @@ class TaskSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         board_id = self.context['board_id']
         return Task.objects.create(board_id=board_id, **validated_data)
+
+
+class UserCreateSerializer(BaseUserCreateSerializer):
+    class Meta(BaseUserCreateSerializer.Meta):
+        fields = ['id', 'username', 'password',
+                  'email', 'first_name', 'last_name']
+
+
+class UserSerializer(BaseUserSerializer):
+    class Meta(BaseUserSerializer.Meta):
+        fields = ['id', 'username', 'email', 'first_name', 'last_name']
