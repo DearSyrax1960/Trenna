@@ -139,7 +139,7 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    'AUTH_HEADER_TYPES': ('JWT',),
+    'AUTH_HEADER_TYPES': ('Bearer',),
     'ACCESS_TOKEN_LIFETIME': timedelta(days=1)
 }
 
@@ -149,3 +149,8 @@ DJOSER = {
         'current_user': 'user.serializers.UserSerializer',
     }
 }
+
+
+"""
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE2NTc1OTI1LCJpYXQiOjE3MTY0ODk1MjUsImp0aSI6IjZjMjEwM2ZhZWQwMzQ5YzU5OTYxYzM0NjNkZWJjMTY5IiwidXNlcl9pZCI6Mn0.HJ2tpyUklxG_b98JDhNFIourLCMNh4vRtqPFtFl35C0
+"""
