@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'debug_toolbar',
     'djoser',
-    'Trenna'
+    'Trenna',
+    'user'
 ]
 
 MIDDLEWARE = [
@@ -143,7 +144,7 @@ SIMPLE_JWT = {
 
 DJOSER = {
     'SERIALIZERS': {
-        'user_create': 'core.serializers.UserCreateSerializer',
-        'current_user': 'core.serializers.UserSerializer',
+        'user_create': 'user.serializers.UserCreateSerializer',
+        'current_user': 'user.serializers.UserSerializer',
     }
 }
