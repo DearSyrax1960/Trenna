@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'debug_toolbar',
     'djoser',
-    'Trenna',
+    'core',
     'user'
 ]
 
