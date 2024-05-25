@@ -29,5 +29,10 @@ class BoardViewSet(ModelViewSet):
 
 
 class WorkspaceViewSet(ModelViewSet):
-    queryset = Workspace.objects.all()
     serializer_class = WorkspaceSerializer
+
+    def get_queryset(self):
+        return Workspace.objects.filter(owner_id=self.request.user.id)
+
+    def get_serializer_context(self):
+        return {'owner_id': self.request.user.id}
