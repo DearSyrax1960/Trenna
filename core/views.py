@@ -1,4 +1,4 @@
-from django.shortcuts import render
+
 from rest_framework.viewsets import ModelViewSet
 
 from .models import *
@@ -33,6 +33,7 @@ class WorkspaceViewSet(ModelViewSet):
 
     def get_queryset(self):
         return Workspace.objects.filter(owner_id=self.request.user.id)
+    # select_related ???/
 
     def get_serializer_context(self):
         return {'owner_id': self.request.user.id}
