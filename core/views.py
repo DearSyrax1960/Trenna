@@ -6,9 +6,6 @@ from .permissions import IsWorkspaceOwner, IsBoardOwner, IsTaskOwner
 from .serializers import TaskSerializer, WorkspaceSerializer, BoardSerializer
 
 
-# Create your views here.
-
-
 class TaskViewSet(ModelViewSet):
     serializer_class = TaskSerializer
 
@@ -19,13 +16,13 @@ class TaskViewSet(ModelViewSet):
         return {'board_id': self.kwargs['board_pk']}
 
     def get_workspace_id(self):
-        return  self.kwargs['workspace_pk']
+        return self.kwargs['workspace_pk']
 
     def get_board_id(self):
-        return  self.kwargs['board_pk']
+        return self.kwargs['board_pk']
 
     def get_task_id(self):
-        return  self.kwargs['pk']
+        return self.kwargs['pk']
 
     def get_permissions(self):
         if self.request.method in ['PATCH', 'DELETE', 'PUT']:
