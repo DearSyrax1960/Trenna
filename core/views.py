@@ -18,8 +18,14 @@ class TaskViewSet(ModelViewSet):
     def get_serializer_context(self):
         return {'board_id': self.kwargs['board_pk']}
 
-    def get_kwargs(self):
-        return self.kwargs
+    def get_workspace_id(self):
+        return  self.kwargs['workspace_pk']
+
+    def get_board_id(self):
+        return  self.kwargs['board_pk']
+
+    def get_task_id(self):
+        return  self.kwargs['pk']
 
     def get_permissions(self):
         if self.request.method in ['PATCH', 'DELETE', 'PUT']:
@@ -37,8 +43,11 @@ class BoardViewSet(ModelViewSet):
     def get_serializer_context(self):
         return {'workspace_id': self.kwargs['workspace_pk']}
 
-    def get_kwargs(self):
-        return self.kwargs
+    def get_workspace_id(self):
+        return self.kwargs['workspace_pk']
+
+    def get_board_id(self):
+        return self.kwargs['pk']
 
     def get_permissions(self):
         if self.request.method in ['PATCH', 'DELETE', 'PUT']:
@@ -61,5 +70,5 @@ class WorkspaceViewSet(ModelViewSet):
             return [IsWorkspaceOwner()]
         return [IsAuthenticated()]
 
-    def get_kwargs(self):
-        return self.kwargs
+    def get_workspace_id(self):
+        return self.kwargs['pk']
