@@ -26,7 +26,7 @@ class BoardSerializer(serializers.ModelSerializer):
 class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task
-        fields = ['id', 'description']
+        fields = ['id', 'description', 'expire_at']
 
     def create(self, validated_data):
         board_id = self.context['board_id']
