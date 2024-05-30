@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'debug_toolbar',
+    # 'django-celery',
     'djoser',
     'core',
     'user'
@@ -155,4 +156,8 @@ DJOSER = {
 
 AUTH_USER_MODEL = 'user.User'
 
-
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER = 'db3c4fe8e2d83d'
+EMAIL_HOST_PASSWORD = '4628fa4a48440a'
+EMAIL_PORT = '2525'
