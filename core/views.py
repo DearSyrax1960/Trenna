@@ -25,9 +25,8 @@ class TaskViewSet(ModelViewSet):
         return self.kwargs['pk']
 
     def get_permissions(self):
-        if self.request.method in ['PATCH', 'DELETE', 'PUT']:
+        if self.action in ['update', 'destroy', 'retrieve', 'partial_update']:
             return [IsTaskOwner()]
-        # post get ha
         return [IsBoardOwner()]
 
 
@@ -47,9 +46,8 @@ class BoardViewSet(ModelViewSet):
         return self.kwargs['pk']
 
     def get_permissions(self):
-        if self.request.method in ['PATCH', 'DELETE', 'PUT']:
+        if self.action in ['update', 'destroy', 'retrieve', 'partial_update']:
             return [IsBoardOwner()]
-        # post get ha
         return [IsWorkspaceOwner()]
 
 
@@ -63,7 +61,7 @@ class WorkspaceViewSet(ModelViewSet):
         return {'owner_id': self.request.user.id}
 
     def get_permissions(self):
-        if self.request.method in ['PATCH', 'DELETE', 'GET', 'PUT']:
+        if self.action in ['update', 'destroy', 'retrieve', 'partial_update', 'list']:
             return [IsWorkspaceOwner()]
         return [IsAuthenticated()]
 
