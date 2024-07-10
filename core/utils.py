@@ -3,6 +3,7 @@ import datetime
 from django.core.mail import send_mass_mail, BadHeaderError
 from .models import Task
 from datetime import timedelta
+from templated_mail.mail import BaseEmailMessage
 
 """
   to do : add celery to run this method daily .
@@ -22,11 +23,13 @@ def check_deadlines():
 
 def send_reminder_email(title, user_email):
     subject = 'Reminder: Deadline of your Task is around the corner. '
-    message = f'This is a reminder for ({title}) Task.'
+    body = f'This is a reminder for ({title}) Task.'
     from_email = 'Trenna@gmail.com'
     to_email = [user_email]
 
     try:
-        send_mass_mail(subject, message, from_email, to_email)
+        # send_mass_mail(subject, body, from_email, to_email)
+        m = BaseEmailMessage(template_name='email/reminder.html', context={'subject': subject, 'message': body})
+        m.send(to_email)
     except BadHeaderError:
         pass
