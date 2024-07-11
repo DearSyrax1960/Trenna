@@ -1,6 +1,5 @@
 services:
   db:
-    container_name: todo-container
     image: mysql
     environment:
       MYSQL_ROOT_PASSWORD: 1234
@@ -12,6 +11,13 @@ services:
       - "8080:3306"
     networks:
       - db
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    restart: always
+    volumes:
+      - redis_data:/var/lib/redis
 
 networks:
   db:
@@ -20,3 +26,4 @@ networks:
 
 volumes:
   db_data:
+  redis_data:
